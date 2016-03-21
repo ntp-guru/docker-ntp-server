@@ -1,12 +1,10 @@
 FROM ubuntu:15.10
 MAINTAINER Aaron Herres <iam@aaronherres.com>
 
-RUN apt-get update && \
-    apt-get install -y ntpd
+RUN apt-get update && apt-get install nano -y
 
-ENV PATH $PATH:/opt/fleet-v0.10.0-linux-amd64
+RUN apt-get install -y chrony
 
-COPY ntpd.conf ntpd.conf
+COPY chrony.conf /etc/chrony/chrony.conf
 
-CMD ["./run.sh"]
-Status API Training Shop Blog About
+CMD ["chronyd", "-d"]
