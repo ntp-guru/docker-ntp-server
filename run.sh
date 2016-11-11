@@ -1,4 +1,4 @@
-#/bin/sh
+#/bin/sh -x
 docker rm -f ntp-server
 docker run \
 -v $PWD/chrony-permissive-example.conf:/etc/chrony.conf \
